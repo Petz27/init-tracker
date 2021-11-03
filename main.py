@@ -1,8 +1,5 @@
 from tkinter import *
-from tkinter import ttk
 from tkinter.font import Font
-
-import top as top
 
 combatant_list = []
 player_list = []
@@ -35,18 +32,10 @@ def next_turn():
 
 
 def create_team():
-    jason = Combatant("Jason", 35)
-    player_list.append(jason)
-    koju = Combatant("Koju", 34)
-    player_list.append(koju)
-    kygia = Combatant("Kygia",33)
-    player_list.append(kygia)
-    mojo = Combatant("Mojo", 32)
-    player_list.append(mojo)
-    grendl = Combatant("Grendl", 31)
-    player_list.append(grendl)
-    kutora = Combatant("Kutora", 30)
-    player_list.append(kutora)
+    content = open("input").readlines()
+    for x in range(0, len(content)):
+        new_combatant = Combatant(content[x].rstrip(), 0)
+        player_list.append(new_combatant)
     global combatant_list
     combatant_list = player_list
 
@@ -80,7 +69,7 @@ def update_listbox():
     listbox.delete(0, END)
     for element in combatant_list:
         listbox.insert(END, str(element.init_value) + " " + element.name)
-    listbox.itemconfig(0, bg="cyan", fg="green")
+    listbox.itemconfig(0, bg="cyan", fg="red")
 
 
 def print_combatant_list():
@@ -101,7 +90,7 @@ if __name__ == "__main__":
     window.geometry("620x330")
     font_b = Font(size=12)
     font_bb = Font(size=14)
-    listbox = Listbox(window, height=10, font=font_bb,exportselection=False)
+    listbox = Listbox(window, height=10, font=font_bb, exportselection=False)
     for element in player_list:
         listbox.insert(END, str(element.init_value) + " " + element.name)
 
@@ -135,7 +124,7 @@ if __name__ == "__main__":
     next_button.pack(padx=5, pady=5, side=LEFT)
 
     if dark_mode:
-        window.configure(background="black")
+        window.configure(background="darkgrey")
 
     update_listbox()
 
