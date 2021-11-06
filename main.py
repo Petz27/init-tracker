@@ -76,7 +76,7 @@ def update_listbox():
     listbox.delete(0, END)
     for element in combatant_list:
         listbox.insert(END, str(element.init_value) + " " + element.name)
-    listbox.itemconfig(0, bg="cyan", fg="red")
+    listbox.itemconfig(0, bg="blue", fg="white")
 
 
 def print_combatant_list():
@@ -96,6 +96,7 @@ if __name__ == "__main__":
     window = Tk()
     window.title("Initiative Tracker")
     window.geometry("400x340")
+    window.iconbitmap("d20.ico")
     font_b = Font(size=12)
     font_bb = Font(size=14)
     listbox = Listbox(window, height=10, font=font_bb, exportselection=False)
